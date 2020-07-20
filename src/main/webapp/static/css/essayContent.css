@@ -1,0 +1,114 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.div_1{
+    width: 1580px;
+    height: auto;
+    margin-top: 50px;
+    margin-left: 150px;
+    border: 1px solid #EEEEEE;
+    border-radius: 8px;
+}
+.div_1_2{
+    width: 1580px;
+    height: 42px;
+    color: black;
+    line-height: 42px;
+    margin-left: 20px;
+    font-weight: 800;
+    text-align: center;
+}
+hr{
+    border: 0.5px solid skyblue;
+}
+
+.div_2{
+    width: 1580px;
+    height: auto;
+    border: 1px solid #EEEEEE;
+    margin-left: 150px;
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 35px;
+    text-indent: 30px;
+}
+
+.btn {
+    --hue: 190;
+    position: relative;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: red;
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: hsl(var(--hue), 100%, 41%);
+    border: 1px solid hsl(var(--hue), 100%, 41%);
+    outline: transparent;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition: 0.25s;
+}
+
+
+.btn:hover {
+    background: hsl(var(--hue), 100%, 31%);
+}
+
+
+.btn primary {
+    --hue: 187;
+}
+
+
+.btn ghost {
+    color: hsl(var(--hue), 100%, 41%);
+    background-color: transparent;
+    border-color: hsl(var(--hue), 100%, 41%);}
+
+
+.btn :hover {
+    color: white;
+}
+
+
+
+.btn shine {
+    color: white;}
+
+
+.btn before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+            120deg,
+            transparent,
+            hsla(var(--hue), 100%, 41%, 0.5),
+            transparent
+    );
+    transform: translateX(-100%);
+    transition: 0.6s;
+}
+
+
+.btn:hover {
+    background: transparent;
+    box-shadow: 0 0 20px 10px hsla(var(--hue), 100%, 41%, 0.5);
+}
+
+.btn:hover::before {
+    transform: translateX(100%);
+}
+
+.r{
+    position:absolute;
+    right:5px;
+    bottom:5px;
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tst.fanzhapian.mapper.TEssayMapper">
+
+
+    <resultMap id="TEssayAndUser" type="com.tst.fanzhapian.entity.TEssay">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="statu" column="statu"/>
+        <result property="createtime" column="createtime"/>
+        <association property="user" javaType="com.tst.fanzhapian.entity.TUser">
+            <id property="id" column="id"/>
+            <result property="username" column="username" />
+        </association>
+    </resultMap>
+
+    <select id="getTEssayByLikeAndPage" resultMap="TEssayAndUser">
+        select t1.*,t2.id,t2.username from t_essay t1 join t_user t2 on t1.userid=t2.id and t1.statu=1
+        <if test="title !=null and title !='' ">
+            where t1.title like '%${title}%'
+        </if>
+    </select>
+
+    <select id="getTEssayByLikeAndPageManager" resultMap="TEssayAndUser">
+        select t1.*,t2.id,t2.username from t_essay t1 join t_user t2 on t1.userid=t2.id
+        <if test="title !=null and title !='' ">
+            where t1.title like '%${title}%'
+        </if>
+    </select>
+
+    <select id="getOneTEssay" resultMap="TEssayAndUser">
+        select t1.*,t2.id,t2.username from t_essay t1 join t_user t2 on t1.userid=t2.id
+        where t1.id='${id}'
+    </select>
+
+    <select id="getCountEssayByUserid" resultType="java.lang.Integer">
+        select count(*) from t_essay WHERE userid =${userid};
+    </select>
+
+    <update id="gotoEssay">
+        UPDATE t_essay set statu=${statu} WHERE id=${id}
+    </update>
+</mapper>

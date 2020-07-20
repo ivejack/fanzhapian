@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tst.fanzhapian.mapper.TCheckMapper">
+
+
+    <resultMap id="TCheck" type="com.tst.fanzhapian.entity.TCheck">
+        <id property="id" column="id"/>
+        <result property="type" column="type"/>
+        <result property="statu" column="statu"/>
+        <result property="result" column="result"/>
+        <result property="checktime" column="checktime"/>
+        <association property="userids" javaType="com.tst.fanzhapian.entity.TUser" >
+            <id property="id" column="id1"/>
+            <result property="username" column="username1"/>
+        </association>
+        <association property="checkpeoples" javaType="com.tst.fanzhapian.entity.TUser" >
+            <id property="id" column="id2"/>
+            <result property="username" column="username2"/>
+        </association>
+        <association property="contentids" javaType="com.tst.fanzhapian.entity.TEssay" >
+            <id property="id" column="id3"/>
+            <result property="title" column="title"/>
+            <result property="content" column="content"/>
+        </association>
+    </resultMap>
+
+    <select id="getTCheckByLikeAndPage" resultMap="TCheck">
+        select t1.*,t2.id id1,t2.username username1,t3.id id2,t3.username username2,t4.id id3,t4.title,t4.content
+        from t_check t1 LEFT JOIN t_user t2 on t1.userid=t2.id
+        LEFT JOIN t_user t3 on t1.checkpeople=t3.id
+        LEFT JOIN t_essay t4 on t1.contentid=t4.id
+        <where>
+            and t1.type=${type}
+            <if test="statu!=null">
+                and t1.statu=${statu}
+            </if>
+            <if test="result!=null">
+                and t1.result=${result}
+            </if>
+        </where>
+    </select>
+
+    <select id="getOneCheck" resultMap="TCheck">
+        select t1.*,t2.id id1,t2.username username1,t3.id id2,t3.username username2,t4.id id3,t4.title,t4.content
+        from t_check t1 LEFT JOIN t_user t2 on t1.userid=t2.id
+        LEFT JOIN t_user t3 on t1.checkpeople=t3.id
+        LEFT JOIN t_essay t4 on t1.contentid=t4.id
+        where t1.id = ${id}
+    </select>
+
+    <update id="toCheck">
+        UPDATE t_check set checkpeople=${userid},statu=1,result=${result} WHERE id=${id};
+    </update>
+
+
+</mapper>

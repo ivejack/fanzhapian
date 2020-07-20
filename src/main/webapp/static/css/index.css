@@ -1,0 +1,151 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.big{
+    position: relative;
+    margin: 20px auto 0;
+    width: 1287px;
+    height:800px;
+    background-image: url("../../img/1.png");
+    background-size: 100%;
+    border: 10px white solid;
+    border-style: inset;
+}
+.logo{
+    position: absolute;
+    left: 80px;
+    top: 50px;
+    width: 250px;
+    height: 80px;
+    background-image: url("../../img/logo.png");
+}
+.loginform{
+    margin: 200px auto ;
+    width: 450px;
+    height: 440px;
+}
+.top{
+    width: 450px;
+    height: 56px;
+    text-align: center;
+    line-height: 56px;
+    font-size: 26px;
+    font-family: "Microsoft YaHei";
+    color: black;
+}
+.main{
+    width: 450px;
+    height: 382px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    opacity:0.9;
+    border-top: 1px #FFFFFF solid;
+}
+.input{
+    width: 380px;
+    height: 40px;
+    background-color: #F5F5F5;
+    margin: 30px auto 10px;
+    border-radius: 12px;
+    border: 1px solid #999;
+    line-height: 40px;
+    font-size: 18px;
+    font-family: "Microsoft YaHei";
+    color: #999999;
+}
+.input_username_password{
+    height: 30px;
+    width: 240px;
+    background-color: #F5F5F5;
+    outline: none;
+    border: none;
+    text-indent: 30px;
+}
+.input_yzm_s{
+    height: 20px;
+    width: 80px;
+    background-color:
+            #F5F5F5;
+    outline: none;
+    border: none;
+    text-indent: 10px;
+}
+.input_yzm{
+    width: 240px;
+    height: 40px;
+    background-color: #F5F5F5;
+    margin: 30px 145px 10px 35px;
+    border-radius: 12px;
+    border: 1px solid #999;
+    line-height: 40px;
+    font-size: 18px;
+    font-family: "Microsoft YaHei";
+    color: #999999;
+    float: left;
+}
+.yzmlogo{
+    width: 100px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid #999;
+    background-image: url("");
+    background-size: 100%;
+    float: right;
+    margin-right: 35px;
+    margin-top: -50px;
+}
+.loginbutton{
+    width: 380px;
+    height: 50px;
+    float: left;
+    margin-left: 35px;
+    margin-top: 30px;
+    text-align: center;
+    line-height: 50px;
+}
+.loginbutton_input{
+    height: 40px;
+    width: 200px;
+    outline: none;
+    border: none;
+    background-color: #65A2FD;
+    font-size: 22px;
+    font-family: "Microsoft YaHei";
+    color: #FFFFFF;
+    letter-spacing: 12px;
+}
+
+.loginAdmin_input{
+    height: 40px;
+    width: 200px;
+    outline: none;
+    border: none;
+    background-color: #65A2FD;
+    font-size: 22px;
+    font-family: "Microsoft YaHei";
+    color: #FFFFFF;
+    letter-spacing: 12px;
+    margin-left: -60px;
+}
+
+.loginAdmin_return{
+    width: auto;
+    height: auto;
+    margin-top: 15px;
+    margin-left: 185px;
+    float: left;
+    letter-spacing: 3px;
+    background-color: #65A2FD;
+}
+
+.loginAdmin_return a{
+    font-size: 18px;
+    color: #FFFFFF;
+    font-family: "Microsoft YaHei";
+    text-decoration: none;
+}
+
+.main_div{
+    background-color: transparent;
+}

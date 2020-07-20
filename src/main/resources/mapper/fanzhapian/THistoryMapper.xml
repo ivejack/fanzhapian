@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tst.fanzhapian.mapper.THistoryMapper">
+
+
+    <resultMap id="history" type="com.tst.fanzhapian.entity.THistory">
+        <id property="id" column="id"/>
+        <result property="statu" column="statu"/>
+        <result property="starttime" column="starttime"/>
+        <association property="user" javaType="com.tst.fanzhapian.entity.TUser">
+            <id property="id" column="id"/>
+            <result property="username" column="username"/>
+        </association>
+        <association property="essay" javaType="com.tst.fanzhapian.entity.TEssay">
+            <id property="id" column="id"/>
+            <result property="title" column="title"/>
+        </association>
+    </resultMap>
+
+    <select id="getAllHistory" resultMap="history">
+        select t1.*,t2.id,t2.username,t3.id,t3.title
+        from t_history t1,t_user t2,t_essay t3
+        where t1.essayid=t3.id
+        and t1.userid=t2.id
+    </select>
+
+</mapper>

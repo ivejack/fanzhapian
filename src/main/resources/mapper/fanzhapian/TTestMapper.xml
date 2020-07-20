@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tst.fanzhapian.mapper.TTestMapper">
+
+    <resultMap id="test" type="com.tst.fanzhapian.entity.TTest">
+        <id property="id" column="id"/>
+        <result property="grade" column="grade"/>
+        <association property="user" javaType="com.tst.fanzhapian.entity.TUser">
+            <id property="id" column="id"/>
+            <result property="username" column="username"/>
+        </association>
+    </resultMap>
+
+    <select id="getAllTest" resultMap="test">
+        select t1.*,t2.id,t2.username
+        from t_test t1,t_user t2
+        where t1.userid=t2.id
+    </select>
+
+    <select id="getOneTest" resultMap="test">
+        select t1.*,t2.id,t2.username
+        from t_test t1,t_user t2
+        where t1.userid=t2.id
+        and t1.id='${id}'
+    </select>
+
+    <select id="getOneTestByUserID" resultMap="test">
+        select t1.*,t2.id,t2.username
+        from t_test t1,t_user t2
+        where t1.userid=t2.id
+        and t2.id='${id}'
+    </select>
+
+</mapper>

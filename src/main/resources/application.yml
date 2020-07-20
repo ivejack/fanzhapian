@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1/fanzhapian?serverTimezone=GMT%2B8
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+
+server:
+  port: 8080
+
+mybatis:
+  mapperLocations: classpath:/resources/mapper/fanzhapian/*.xml
+
+pagehelper:
+  auto-dialect: true
+  helper-dialect: mysql
+  reasonable: true
+  params: count=countSql

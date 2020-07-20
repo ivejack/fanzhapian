@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.br{
+    border: 1px solid red;
+}
+
+/*试卷中间部分整体DIV*/
+.test_middle{
+    width: 100%;
+    height: auto;
+    margin-top: 100px;
+}
+.test_middle_1{
+    margin: 0 auto;
+    width: 1280px;
+    height: 1000px;
+}
+.test_middle_top{
+    font-size: 14px;
+    color: #999999;
+    margin-top: 5px;
+}
+.test_middle_title{
+    width: 350px;
+    height: 40px;
+    margin: 25px auto;
+    line-height: 40px;
+ }
+.title_1{
+    font-size: 24px;
+}
+.title_2{
+    font-size: 18px;
+}
+.title_3{
+    font-size: 16px;
+    font-weight: 600;
+}
+.test_middle_single{
+
+}
+.single_1{
+    font-size: 18px;
+    color: #333333;
+    font-weight: 600;
+}
+.single_2{
+    font-size: 16px;
+    color: #888888;
+}
+.single_3{
+    font-size: 14px;
+}
+.test_middle_exercises{
+    margin-top: 15px;
+    width: auto;
+    height: 50px;
+}
+.exercises_1{
+    font-size: 14px;
+
+}
+.test_middle_exercises li{
+    font-size: 14px;
+    color: #888888;
+    float: left;
+    list-style: none;
+    margin-right: 50px;
+    margin-top: 10px;
+}
+.test_middle_exercises li:hover{
+    color: #65A2FD;
+}
+.test_middle_single_1{
+    margin-top: 30px;
+}
+.test_middle_single_2{
+    margin-top: 30px;
+}
+.judge{
+    margin-top: 20px;
+}
+.judge_1{
+    margin-left: 20px;
+}
+.test_middle_button{
+    width: 240px;
+    height: 32px;
+    margin: 60px auto;
+}
+.test_middle_button_1{
+    width: 100px;
+    height: 30px;
+    border-radius:9px;
+    line-height: 30px;
+    text-align: center;
+    color: green;
+    float: left;
+    border: 1px solid black;
+}
+.test_middle_button_2{
+    width: 100px;
+    height: 30px;
+    border-radius:9px;
+    line-height: 30px;
+    text-align: center;
+    color: red;
+    float: right;
+    border: 1px solid black;
+}

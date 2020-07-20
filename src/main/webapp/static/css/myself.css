@@ -1,0 +1,93 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.b{
+    border: 1px solid red;
+}
+.left_menu{
+    float: left;
+    width: 200px;
+    height: 450px;
+    position: relative;
+}
+.left_menu_title{
+    width: 90px;
+    height: 20px;
+    border-left: 6px solid #65A2FD;
+    text-align: center;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+.head_img{
+    width: 125px;
+    height: 124px;
+    display: block;
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    border: 1px solid red;
+}
+.myinfo{
+    position: absolute;
+    top: 210px;
+    left: 20px;
+    list-style: none;
+}
+.myinfo li{
+    margin-bottom: 25px;
+    font-size: 16px;
+    color: #333333;
+}
+.submitbtn{
+    width: 64px;
+    height: 28px;
+    font-size: 15px;
+    position: absolute;
+    left: 30px;
+    text-align: center;
+    line-height: 28px;
+    cursor: pointer;
+    border-radius:9px;
+    color: skyblue;
+    float: left;
+    border: 1px solid skyblue;
+
+}
+.right_menu{
+    float: right;
+    width: 540px;
+    height: 220px;
+    margin-top: 20px;
+}
+.main{
+    width: 980px;
+    height: 600px;
+    margin: 100px auto;
+}
+.right_menu_title{
+    width: 515px;
+    height: 20px;
+    border-left: 6px solid #65A2FD;
+    padding-left: 15px;
+    font-weight: 600;
+}
+
+.right_context{
+    width: 540px;
+    height: auto;
+    margin-top: 20px;
+}
+.right_context_frist{
+    background-color: skyblue;
+    height: 30px;
+    color: #ffffff;
+    font-size: 15px;
+}
+.right_context td{
+    height: 50px;
+    border-bottom: 1px solid #999999;
+    text-align: center;
+}
