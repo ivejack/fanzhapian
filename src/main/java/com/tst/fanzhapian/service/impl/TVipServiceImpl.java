@@ -50,8 +50,25 @@ public class TVipServiceImpl extends ServiceImpl<TVipMapper, TVip> implements IT
         return pageInfo;
     }
 
+    /**
+     * 查询单个详情
+     * @param id
+     * @return
+     */
     @Override
     public TVip getOneVip(String id) {
         return tVipMapper.getOneVip(id);
+    }
+
+    /**
+     * 修改积分   (积分来源：个人积分（浏览文章，发表文章，举报，拉朋友），团队积分)
+     * @param id
+     * @param score
+     * @return
+     */
+    @Override
+    public boolean addScore(String id, String score) {
+        System.out.println("????");
+        return tVipMapper.updScore(id,score);
     }
 }

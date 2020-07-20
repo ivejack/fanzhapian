@@ -21,5 +21,6 @@ public interface ITVipService extends IService<TVip> {
     PageInfo<TVip> getVIPByLikeAndPage(Integer pageNum, Integer pageSize, String username);
     /** 查询单个详情 */
     TVip getOneVip(String id);
-    /** 修改积分   (积分来源：个人积分（浏览文章，发表文章，举报，拉朋友），团队积分)*/
+    /** 增加积分   (积分来源：个人积分（浏览文章，发表文章，举报，拉朋友），团队积分)*/
+    boolean addScore(String id,String score);
 }

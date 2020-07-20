@@ -3,8 +3,10 @@ package com.tst.fanzhapian.controller;
 
 import com.tst.fanzhapian.entity.TTest;
 import com.tst.fanzhapian.entity.TTeststorage;
+import com.tst.fanzhapian.entity.TVip;
 import com.tst.fanzhapian.service.ITTestService;
 import com.tst.fanzhapian.service.ITTeststorageService;
+import com.tst.fanzhapian.service.ITVipService;
 import com.tst.fanzhapian.util.KeyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,12 +34,15 @@ public class TTestController{
     private ITTestService itTestService;
     @Autowired
     private ITTeststorageService itTeststorageService;
+    @Autowired
+    private ITVipService itVipService;
 
     /**
      * 提交试卷
      */
     @RequestMapping("/saveTest")
     public String saveTest(HttpServletRequest request, String[] ids, String ans[]){
+        String userid = (String) (request.getSession().getAttribute("userid"));
         TTest tTest = new TTest();
         Integer grade=0;
         for(int i =0 ;i<ids.length;i++){
@@ -48,9 +53,16 @@ public class TTestController{
                 grade+=0;
             }
         }
+
+        //积分变动（添加）
+        TVip oneVip = itVipService.getOneVip(userid);
+        Integer score = new Integer(oneVip.getScore());
+        Integer i = (grade / 10)+score;
+        itVipService.addScore(userid,i.toString());
+
         tTest.setGrade(grade.toString());
         tTest.setId(KeyUtils.genUniqueKey());
-        tTest.setUserid((String)(request.getSession().getAttribute("userid")));
+        tTest.setUserid(userid);
         itTestService.saveTest(tTest);
         return grade.toString();
     }

@@ -21,5 +21,6 @@ public interface TVipMapper extends BaseMapper<TVip> {
     List<TVip> getVIPByLike(@Param("username") String username);
     /** 查询单个详情 */
     TVip getOneVip(@Param("id") String id);
-
+    /** 修改积分 */
+    boolean updScore(@Param("id") String id,@Param("score") String score);
 }

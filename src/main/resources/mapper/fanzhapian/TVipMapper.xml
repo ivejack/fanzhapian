@@ -12,7 +12,6 @@
 
     </resultMap>
 
-
     <select id="getVIPByLike" resultMap="tVips" >
         select t1.id,t1.userid,t2.username,t1.score
         from t_vip t1 inner JOIN t_user t2
@@ -27,5 +26,9 @@
         from t_vip t1 inner JOIN t_user t2
         on t1.userid=t2.id and t2.id=${id}
     </select>
+
+    <update id="updScore">
+        update t_vip set score = ${score} where userid=${id}
+    </update>
 
 </mapper>
