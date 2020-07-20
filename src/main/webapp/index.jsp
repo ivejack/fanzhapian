@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>登录界面hushuo</title>
+    <title>登录界面</title>
     <link type="text/css" rel="stylesheet" href="static/css/index.css">
 
     <script type="text/javascript" src="static/js/jquery-1.8.3.min.js"></script>
