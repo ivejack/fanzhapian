@@ -15,8 +15,9 @@ public class UserTest {
     void contextLoads() {
         TUser tUser = new TUser();
         /** 查询单个用户详情 ok*/
-//        TUser byId = itUserService.getById("1");
-//        System.out.println(byId);
+        TUser byId = itUserService.getById("1");
+        System.out.println(byId);
+        System.out.println(byId.getAge());
 
         /** 用户新增 ok*/
 //        tUser.setUsername("root1");

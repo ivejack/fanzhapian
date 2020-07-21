@@ -3,6 +3,8 @@ package com.tst.fanzhapian.entity;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.Calendar;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.apache.ibatis.type.Alias;
@@ -70,7 +72,12 @@ public class TUser implements Serializable {
     @TableField("endTime")
     private LocalDateTime endTime;
 
-
+    //获取年龄
+    public int getAge(){
+        String[] split = birthday.split("-");
+        int i = Calendar.getInstance().get(Calendar.YEAR) - new Integer(split[0]);
+        return i;
+    }
 
 
 

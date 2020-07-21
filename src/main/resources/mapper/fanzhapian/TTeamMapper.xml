@@ -2,4 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tst.fanzhapian.mapper.TTeamMapper">
 
+    <resultMap id="teamuser" type="com.tst.fanzhapian.entity.TTeam">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="createtime" column="createtime"/>
+        <association property="username" javaType="com.tst.fanzhapian.entity.TUser">
+            <id property="id" column="userid"/>
+            <result property="username" column="username"/>
+        </association>
+    </resultMap>
+
+    <select id="getTeamidByUserid" resultType="com.tst.fanzhapian.entity.TTeam">
+        select id from t_team where userid = ${userid}
+    </select>
+
+    <select id="getTeamList" resultMap="teamuser">
+        select t1.*,t2.id userid,t2.username
+        from t_team t1 ,t_user t2
+        where t1.userid=t2.id
+        <if test="name != null and name != '' ">
+            and t1.name like '%${name}%'
+        </if>
+    </select>
+
+    <delete id="delTeam">
+        delete from t_team where id=${id}
+    </delete>
 </mapper>

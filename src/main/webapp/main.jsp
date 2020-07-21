@@ -24,7 +24,7 @@
                 <li style="border: none;height:30px;"></li>
                 <li><span></span><p><a href="exam.jsp">反诈小考&gt;&gt;</a></p></li>
                 <li><span></span><p><a href="essay.jsp">文章专栏&gt;&gt;</a></p></li>
-                <li><span></span><p><a href="#">会员入口&gt;&gt;</a></p></li>
+                <li><span></span><p><a href="vip.jsp">会员入口&gt;&gt;</a></p></li>
                 <li><span></span><p><a href="myself.jsp">我的&gt;&gt;</a></p></li>
             </ul>
         </div>

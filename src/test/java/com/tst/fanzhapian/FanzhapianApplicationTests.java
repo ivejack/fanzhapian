@@ -10,9 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @SpringBootTest
 class FanzhapianApplicationTests {
@@ -36,7 +34,7 @@ class FanzhapianApplicationTests {
 //            tTeststorage.setAnalysis("这是假的"+i);
 //            itTeststorageService.saveTestStorage(tTeststorage);
 //        }
-        itTeststorageService.getTestStorageAll(1,"11").getRecords().forEach(System.out::println);
+//        itTeststorageService.getTestStorageAll(1,"11").getRecords().forEach(System.out::println);
 //        for (int i=0;i<100;i++){
 //            HashSet<Integer> set = new HashSet<>();
 //            int n =10;
@@ -44,6 +42,17 @@ class FanzhapianApplicationTests {
 //
 //            System.out.println(set.size());
 //        }
+
+        //获取年龄
+        String s1 = "2001-11-11";
+        int age = getAge(s1);
+        System.out.println(age);
+    }
+
+    private int getAge(String birthday){
+        String[] split = birthday.split("-");
+        int i = Calendar.getInstance().get(Calendar.YEAR) - new Integer(split[0]);
+        return i;
     }
 
     private HashSet<Integer> getIds(Integer n ,HashSet<Integer> set){

@@ -20,9 +20,12 @@
         <div class="carousel_menu">
             <ul>
                 <li style="border: none;height:30px;"></li>
+                <li><span></span><p><a href="usermanager.jsp">用户管理&gt;&gt;</a></p></li>
                 <li><span></span><p><a href="teststorage.jsp">题库管理&gt;&gt;</a></p></li>
                 <li><span></span><p><a href="blackstorage.jsp">黑库管理&gt;&gt;</a></p></li>
                 <li><span></span><p><a href="essaymanager.jsp">文章管理&gt;&gt;</a></p></li>
+                <li><span></span><p><a href="teammanager.jsp">团队管理&gt;&gt;</a></p></li>
+                <li><span></span><p><a href="projectmanager.jsp">项目管理&gt;&gt;</a></p></li>
                 <li><span></span><p><a href="checkpublishessay.jsp">发表审核&gt;&gt;</a></p></li>
                 <li><span></span><p><a href="checkreport.jsp">举报审核&gt;&gt;</a></p></li>
             </ul>

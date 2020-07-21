@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tst.fanzhapian.mapper.TTeampeopleMapper">
+
+    <resultMap id="teampeople" type="com.tst.fanzhapian.entity.TTeampeople">
+
+        <association property="team" javaType="com.tst.fanzhapian.entity.TTeam">
+            <id property="id" column="teamid"/>
+            <result property="name" column="name"/>
+            <result property="createtime" column="createtime"/>
+            <collection property="username" ofType="com.tst.fanzhapian.entity.TUser">
+                <id property="id" column="usernameid"/>
+                <result property="username" column="createpeople"/>
+            </collection>
+        </association>
+
+        <association property="user" javaType="com.tst.fanzhapian.entity.TUser">
+            <id property="id" column="userid"/>
+            <result property="username" column="username"/>
+            <result property="phone" column="phone"/>
+            <result property="sex" column="sex"/>
+        </association>
+    </resultMap>
+
+    <select id="getMyTeamPeople" resultMap="teampeople">
+        select t1.id teamid,t1.name,t4.username createpeople, t1.createtime ,t3.username ,
+        t4.id usernameid , t3.id userid, t3.username, t3.sex,t3.phone
+        from t_team t1 LEFT JOIN t_teampeople t2 on t1.id=t2.teamid
+        LEFT JOIN t_user t3 on t2.userid=t3.id
+        LEFT JOIN t_user t4 on t1.userid=t4.id
+        where t1.userid=${id}
+    </select>
+</mapper>
