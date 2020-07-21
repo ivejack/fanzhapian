@@ -5,13 +5,10 @@ import com.tst.fanzhapian.entity.TTeampeople;
 import com.tst.fanzhapian.service.ITTeampeopleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -33,13 +30,10 @@ public class TTeampeopleController {
      * @return
      */
     @RequestMapping("/getMyPeople")
-    @ResponseBody
-    public Map<String,Object> getMyPeople(HttpServletRequest request){
+    public List<TTeampeople> getMyPeople(HttpServletRequest request){
         String id = (String) request.getSession().getAttribute("userid");
         List<TTeampeople> myTeamPeople = itTeampeopleService.getMyTeamPeople(id);
-        Map<String,Object> map = new HashMap<>();
-        map.put("list",myTeamPeople);
-        return map;
+        return myTeamPeople;
     }
 
 
