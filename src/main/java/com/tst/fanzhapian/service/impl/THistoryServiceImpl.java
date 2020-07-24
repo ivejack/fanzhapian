@@ -45,10 +45,6 @@ public class THistoryServiceImpl extends ServiceImpl<THistoryMapper, THistory> i
     public boolean saveHistory(THistory tHistory) {
         //主键
         tHistory.setId(KeyUtils.genUniqueKey());
-        //加入浏览人编号
-
-        //加入浏览文章编号
-
         return this.save(tHistory);
     }
 

@@ -22,4 +22,6 @@ public interface ITCheckService extends IService<TCheck> {
     boolean goCheck(String id,String userid,Integer result);
     /**  进行审核   举报*/
     boolean gotoCheckReport(String id,String userid,Integer result);
+    /**  进行审核   删除*/
+    boolean delCheck(String id);
 }

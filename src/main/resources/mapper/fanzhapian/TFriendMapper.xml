@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tst.fanzhapian.mapper.TFriendMapper">
+
+
+    <resultMap id="TFriend" type="com.tst.fanzhapian.entity.TFriend">
+        <id property="id" column="id"/>
+        <result property="friendId" column="friendId"/>
+        <result property="type" column="type"/>
+        <association property="userId" javaType="com.tst.fanzhapian.entity.TUser">
+            <id property="id" column="userid"/>
+            <result property="username" column="username"/>
+            <result property="sex" column="sex"/>
+            <result property="loginname" column="loginname"/>
+        </association>
+    </resultMap>
+
+    <select id="getTFriendByLikeAndPage" resultMap="TFriend">
+        select t1.*,t2.id userid,t2.username,t2.sex,t2.loginname
+        from t_friend t1,t_user t2
+        where t1.userId=t2.id
+        and t2.id != t1.friendid
+        and t1.type='1'
+    </select>
+
+    <select id="getTAddFriendByLikeAndPage" resultMap="TFriend">
+        select t1.*,t2.username,t2.sex,t2.loginname
+        from t_friend t1,t_user t2
+        where t1.userId=t2.id
+        and t2.id != t1.friendid
+        and t1.type='0'
+    </select>
+
+
+</mapper>

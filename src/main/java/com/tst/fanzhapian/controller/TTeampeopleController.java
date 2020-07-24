@@ -1,6 +1,7 @@
 package com.tst.fanzhapian.controller;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tst.fanzhapian.entity.TTeampeople;
 import com.tst.fanzhapian.service.ITTeampeopleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -33,6 +35,14 @@ public class TTeampeopleController {
     public List<TTeampeople> getMyPeople(HttpServletRequest request){
         String id = (String) request.getSession().getAttribute("userid");
         List<TTeampeople> myTeamPeople = itTeampeopleService.getMyTeamPeople(id);
+//        myTeamPeople.forEach(System.out::println);
+//
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        try {
+//            objectMapper.writeValue(System.out,myTeamPeople);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         return myTeamPeople;
     }
 

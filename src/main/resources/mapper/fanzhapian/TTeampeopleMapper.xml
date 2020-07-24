@@ -11,6 +11,7 @@
             <collection property="username" ofType="com.tst.fanzhapian.entity.TUser">
                 <id property="id" column="usernameid"/>
                 <result property="username" column="createpeople"/>
+                <result property="birthday" column="birthday"/>
             </collection>
         </association>
 
@@ -19,12 +20,13 @@
             <result property="username" column="username"/>
             <result property="phone" column="phone"/>
             <result property="sex" column="sex"/>
+            <result property="birthday" column="teambirthday"/>
         </association>
     </resultMap>
 
     <select id="getMyTeamPeople" resultMap="teampeople">
-        select t1.id teamid,t1.name,t4.username createpeople, t1.createtime ,t3.username ,
-        t4.id usernameid , t3.id userid, t3.username, t3.sex,t3.phone
+        select t1.id teamid,t1.name,t4.username createpeople,t4.birthday ,t1.createtime ,t3.username ,
+        t4.id usernameid , t3.id userid, t3.username, t3.sex,t3.phone,t3.birthday teambirthday
         from t_team t1 LEFT JOIN t_teampeople t2 on t1.id=t2.teamid
         LEFT JOIN t_user t3 on t2.userid=t3.id
         LEFT JOIN t_user t4 on t1.userid=t4.id

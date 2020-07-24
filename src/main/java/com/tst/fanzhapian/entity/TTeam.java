@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
  * @since 2020-07-21
  */
 @Data
-public class TTeam{
+public class TTeam implements Serializable{
 
     /**
      * 团队编号

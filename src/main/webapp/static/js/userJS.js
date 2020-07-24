@@ -42,7 +42,7 @@ function usermanager() {
        data:data,
        type: "post",
        success:function (rel) {
-            console.log(rel);
+            // console.log(rel);
            var trs ="";
            var pages="";
            $(rel.records).each(function (i) {
@@ -53,7 +53,7 @@ function usermanager() {
                trs+="<td>"+this.password+"</td>";
                trs+="<td>"+this.phone+"</td>";
                trs+="<td>"+(this.sex==0?'男':'女')+"</td>";
-               trs+="<td>"+this.age+"</td>";
+               trs+="<td>"+getAge(this.birthday)+"</td>";
                trs+="<td>"+(this.statu==0?'注销':'启用')+"</td>";
                trs+="<td>"+this.startTime+"</td>";
                trs+="<td>"+this.endTime+"</td>";

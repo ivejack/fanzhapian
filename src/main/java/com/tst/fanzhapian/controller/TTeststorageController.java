@@ -28,8 +28,8 @@ public class TTeststorageController {
 
     /**
      * 查询全部,分页，模糊
-     * @param pageNum
-     * @param question
+     * @param pageNum 当前页
+     * @param question  题目名
      * @return
      */
     @RequestMapping("/getTestStorageAll")
@@ -40,6 +40,11 @@ public class TTeststorageController {
         return itTeststorageService.getTestStorageAll(pageNum, question);
     }
 
+    /**
+     *
+     * @param id 题目id
+     * @return
+     */
     @RequestMapping("/getOneTestStorage")
     public TTeststorage getOneTestStorage(String id){
 //        System.out.println("goin");
@@ -49,7 +54,7 @@ public class TTeststorageController {
 
     /**
      * 保存或新增
-     * @param tTeststorage
+     * @param tTeststorage 题库实体类
      * @return
      */
     @RequestMapping("/saveTestStorage")
@@ -63,6 +68,11 @@ public class TTeststorageController {
         }
     }
 
+    /**
+     *
+     * @param id 题目id
+     * @return
+     */
     @RequestMapping("/delTestStorage")
     public boolean delTestStorage(String id){
 //        System.out.println("1:"+id);

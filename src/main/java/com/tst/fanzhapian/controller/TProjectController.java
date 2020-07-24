@@ -28,8 +28,8 @@ public class TProjectController{
 
     /**
      * 项目列表
-     * @param pageNum
-     * @param name
+     * @param pageNum 当前页
+     * @param name  项目名
      * @return
      */
     @RequestMapping(value = {"/getProjectList","/sys/getProjectList"})
@@ -39,7 +39,7 @@ public class TProjectController{
 
     /**
      * 单个查询
-     * @param id
+     * @param id 项目id
      * @return
      */
     @RequestMapping("/sys/getOneProject")
@@ -49,7 +49,7 @@ public class TProjectController{
 
     /**
      * 新增，修改
-     * @param tProject
+     * @param tProject 项目实体类
      * @return
      */
     @RequestMapping("/sys/saveorupdate")
@@ -61,6 +61,11 @@ public class TProjectController{
         }
     }
 
+    /**
+     * 删除
+     * @param id 项目id
+     * @return
+     */
     @RequestMapping("/sys/delproject")
     public boolean delProject(String id){
         return itProjectService.delProject(id);

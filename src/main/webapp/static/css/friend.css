@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #b8c6db;
+    background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+}
+
+.br{
+    border: 1px solid red;
+}
+
+a{
+   text-underline: none;
+    text-decoration: none;
+}
+
+.middle{
+    width: auto;
+    height: 600px;
+}
+
+.middle_1{
+    margin: 0 auto;
+    width: 1280px;
+    height: 700px;
+}
+.z1{
+    width: 1280px;
+    height: 400px;
+}
+.z2{
+    float: left;
+    font-family:΢���ź�;
+    font-size: 22px;
+    margin: 150px 150px;
+    line-height: 70px;
+    display: inline-block;
+}
+.z2 a{
+    color: #808080;
+}
+.z3{
+    font-family:΢���ź�;
+    font-size: 15px;
+    color: #808080;
+    width: 1200px;
+    height: 50px;
+}
+.z3 ul li{
+    float:left;
+    margin-right:30px;
+    list-style:none;
+    padding-top: 30px;
+}
+.z4{
+    width: 600px;
+    height: 20px;
+    margin-top: 400px;
+    margin-left: 600px;
+    font-family:΢���ź�;
+    color: #808080;
+    font-size: 12px;
+}
+.z4 ul li{
+    list-style:none;
+    float:left;
+}
+.z5{
+    width: 280px;
+    height: 60px;
+    font-family:΢���ź�;
+    font-size: 14px;
+    color: #aaaaaa;
+    line-height: 60px;
+    float: left;
+    margin-top: 40px;
+    margin-left: -120px;
+}
+.z6{
+    font-family:΢���ź�;
+    font-size: 16px;
+    color: #333333;
+    width: 140px;
+    text-align: left;
+}
+#z7{
+    color: #65a2fd;
+}
+button{
+    font-family:΢���ź�;
+    font-size: 14px;
+    color: #fdfdfd;
+    background-color: #65a2fd;
+    width: 75px;
+    height: 30px;
+    border: 1px solid #65a2fd;
+    border-radius: 10%;
+}
+
+.b{
+    border: 1px solid red;
+}
+.bigDiv{
+    width: 1280px;
+    height: 500px;
+    margin:0 auto;
+}
+.f16{
+    font-size: 16px;
+}
+.f12{
+    font-size: 12px;
+}
+.f14{
+    font-size: 14px;
+}
+.fm{
+    font-family: ΢���ź�;
+}
+.fa{
+    font-family: AdobeHeitiStd-Regular;
+}
+.fl{
+    float: left;
+}
+.chat{
+    width: 840px;
+    height: 440px;
+    margin-left: 220px;
+    margin-top: 27px;
+    border-radius: 20px;
+}
+.top{
+    height: 40px;
+    background-color: #009bdb;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    line-height: 40px;
+    text-indent: 20px;
+}
+.float_left{
+    float: left;
+}
+.float_right{
+    float: right;
+}
+.main{
+    width: 800px;
+    height: auto;
+    margin-top: 15px;
+}
+.main_p{
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    background-position:center;
+    background-size:40px 40px;
+}
+.main_p_div_left{
+    width: 700px;
+    height: 40px;
+    float: left;
+    padding-left: 10px;
+}
+.main_p_div_right{
+    width: 700px;
+    height: 40px;
+    float: right;
+    padding-right: 10px;
+    text-align: right;
+}
+
+.main_centent{
+    width: 700px;
+    height: auto;
+    float: left;
+    padding-left: 50px;
+}
+.t_align_right{
+    text-align: right;
+}
+.color009bdb{
+    color: #009bdb;
+}
+.color48ea6e{
+    color: #48ea6e;
+}
+.cw{
+    color: #ffffff;
+}
+.center{
+    height: 300px;
+    width: 840px;
+    overflow-y: auto;
+}
+.foot{
+    height: 100px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: #BBBBBB;
+}
+.foot_button{
+    width: 100px;
+    height: 40px;
+    float: right;
+    margin-top: 30px;
+    margin-right: 20px;
+    background-color: #009bdb;
+    border: 0px;
+    border-radius: 8px;
+    color: #fdfdfd;
+    letter-spacing: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.c33{
+    background-color: #dddddd;
+}
+.bn{
+    border: none;
+    resize: none;
+    outline: none;
+}
+.boxs{
+    box-shadow: 1px 1px 10px 2px #b3b3b3;
+    border: 1px solid #b3b3b3;
+}
+.div_option{
+    width: 180px;
+    height: auto;
+    float: right;
+    margin-top: 15px;
+    margin-left: 30px;
+}
+.div_option ul{
+    list-style: none;
+}
+.div_option ul li{
+    float: left;
+    margin: 5px;
+}
+.div_option ul li a{
+    color: black;
+    text-decoration: none;
+}
+.div_floor_siez{
+    font-size: 12px;
+    font-family: "microsoft yahei";
+    margin-top: 20px;
+    float: right;
+}

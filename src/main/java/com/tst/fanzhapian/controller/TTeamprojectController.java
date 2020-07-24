@@ -39,7 +39,7 @@ public class TTeamprojectController {
 
     /**
      * 删除我的项目
-     * @param id
+     * @param id 项目id
      * @return
      */
     @RequestMapping("/delproject")
@@ -52,7 +52,7 @@ public class TTeamprojectController {
 
     /**
      * 新增我的项目
-     * @param id
+     * @param id 项目id
      * @return
      */
     @RequestMapping("/addproject")

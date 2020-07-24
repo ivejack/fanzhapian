@@ -24,6 +24,7 @@
         </association>
     </resultMap>
 
+
     <select id="getTCheckByLikeAndPage" resultMap="TCheck">
         select t1.*,t2.id id1,t2.username username1,t3.id id2,t3.username username2,t4.id id3,t4.title,t4.content
         from t_check t1 LEFT JOIN t_user t2 on t1.userid=t2.id
@@ -51,6 +52,10 @@
     <update id="toCheck">
         UPDATE t_check set checkpeople=${userid},statu=1,result=${result} WHERE id=${id};
     </update>
+
+    <delete id="delCheck">
+        delete from t_check where id=${id}
+    </delete>
 
 
 </mapper>

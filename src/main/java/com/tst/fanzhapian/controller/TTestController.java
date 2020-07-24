@@ -39,6 +39,10 @@ public class TTestController{
 
     /**
      * 提交试卷
+     * @param request
+     * @param ids 题目编号
+     * @param ans 回答答案
+     * @return
      */
     @RequestMapping("/saveTest")
     public String saveTest(HttpServletRequest request, String[] ids, String ans[]){

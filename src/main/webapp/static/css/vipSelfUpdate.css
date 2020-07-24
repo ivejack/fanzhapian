@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #b8c6db;
+    background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+}
+.title{
+    width: 980px;
+    height: 60px;
+    margin: 0 auto;
+    line-height: 60px;
+    color: #999999;
+}
+.titlecontext {
+    float: left;
+    font-size: 14px;
+    font-family: Î¢ÈíÑÅºÚ;
+}
+.myself{
+    width: 1000px;
+    margin: 35px auto 0px;
+}
+.submit{
+    display: block;
+    margin: 0 auto;
+}
+.formtext{
+    font-family: Î¢ÈíÑÅºÚ;
+    font-size: 20px;
+    color: #333333;
+}
+.forminput{
+    height: 50px;
+    width: 600px;
+    background-color: #eeeeee;
+    margin-left: 40px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #888888;
+    outline: none;
+}
+.flag1{
+    width: 700px;
+    margin: 20px auto 0px;
+}
+.forminput2{
+    height: 50px;
+    width: 150px;
+    background-color: #eeeeee;
+    margin-left: 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #888888;
+    outline: none;
+}
+.flag2{
+    color: skyblue;
+    font-size: 20px;
+    margin-left: 10px;
+}
+.submit{
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    color: skyblue;
+    font-size: 20px;
+    margin-top: 35px;
+    cursor: pointer;
+    border: 1px solid skyblue;
+}
+.headimg{
+    display: block;
+    width: 125px;
+    height: 124px;
+    margin: 0 auto;
+    cursor: pointer;
+    border: 1px solid white;
+}
+.main{
+    width: auto;
+    height: 600px;
+    margin: 100px auto;
+}

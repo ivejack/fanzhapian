@@ -68,7 +68,7 @@ public class TVipServiceImpl extends ServiceImpl<TVipMapper, TVip> implements IT
      */
     @Override
     public boolean addScore(String id, String score) {
-        System.out.println("????");
+//        System.out.println("????");
         return tVipMapper.updScore(id,score);
     }
 }

@@ -73,11 +73,12 @@ public class TUser implements Serializable {
     private LocalDateTime endTime;
 
     //获取年龄
-    public int getAge(){
-        String[] split = birthday.split("-");
-        int i = Calendar.getInstance().get(Calendar.YEAR) - new Integer(split[0]);
-        return i;
-    }
+//    public Integer getAge(){
+//        System.out.println(birthday);
+//        String[] split = birthday.split("-");
+//        Integer i = Calendar.getInstance().get(Calendar.YEAR) - new Integer(split[0]);
+//        return i;
+//    }
 
 
 

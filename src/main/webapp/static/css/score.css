@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #b8c6db;
+    background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+}
+
+div{
+    width: 600px;
+    height: 410px;
+}
+
+.div_1{
+    position: fixed;
+    top: 70px;
+    left: 250px;
+}
+
+.div_2{
+    position: fixed;
+    bottom: 30px;
+    left: 250px
+}
+
+.div_3{
+    position: fixed;
+    top: 70px;
+    right: 250px;
+}
+
+.div_4{
+    position: fixed;
+    bottom: 30px;
+    right: 250px;
+}
+
+.score{
+    height: auto;
+    width: auto;
+    position:fixed; top:0;
+    font-size: 22px;
+    font-family: "Microsoft YaHei";
+    margin:10px;
+}

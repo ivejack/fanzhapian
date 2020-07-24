@@ -23,19 +23,25 @@ public class TTeamController {
 
     /**
      * 查询全部
-     * @param pageNum
-     * @param name
+     * @param pageNum 当前页
+     * @param name  团队名
      * @return
      */
     @RequestMapping("/sys/getTeamList")
     public PageInfo<TTeam> getTeamList(Integer pageNum,String name){
-        System.out.println(pageNum);
-        System.out.println(name);
+//        System.out.println(pageNum);
+//        System.out.println(name);
         Integer pageSize =5 ;
         PageInfo<TTeam> teamList = itTeamService.getTeamList(pageNum, pageSize, name);
-        System.out.println("tttt:"+teamList);
+//        System.out.println("tttt:"+teamList);
         return teamList;
     }
+
+    /**
+     *
+     * @param id 团队id
+     * @return
+     */
     //删除
     @RequestMapping("/sys/delTeam")
     public boolean delTeam(String id){

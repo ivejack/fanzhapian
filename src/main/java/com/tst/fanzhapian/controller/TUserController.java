@@ -46,8 +46,8 @@ public class TUserController {
     /**
      * 登陆
      * @param request
-     * @param loginname
-     * @param password
+     * @param loginname 登录名
+     * @param password  密码
      * @return
      */
     @RequestMapping("/login.action")
@@ -72,12 +72,14 @@ public class TUserController {
     /**
      * 后台登陆
      * @param request
-     * @param loginname
-     * @param password
+     * @param loginname 登陆名
+     * @param password 密码
      * @return
      */
     @RequestMapping("/admin.action")
     public Map<String,Object> Login(HttpServletRequest request, String loginname, String password){
+//        System.out.println(loginname);
+//        System.out.println(password);
         HttpSession session = request.getSession();
         Map<String,Object> map = new HashMap<>();
         TUser login = itUserService.login(loginname, password);
@@ -128,10 +130,10 @@ public class TUserController {
     /**
      * 修改我的信息
      * @param request
-     * @param name
-     * @param pwd
-     * @param sex
-     * @param time
+     * @param name 用户名
+     * @param pwd   密码
+     * @param sex   性别
+     * @param time  出生日期
      * @return
      */
     @RequestMapping("/updatemyself")
@@ -161,8 +163,8 @@ public class TUserController {
 
     /**
      * 后台 用户管理
-     * @param pageNum
-     * @param tUser
+     * @param pageNum 当前页
+     * @param tUser user实体类
      * @return
      */
     @RequestMapping("/sys/usermanager")
@@ -173,8 +175,8 @@ public class TUserController {
 
     /**
      * 启用或注销
-     * @param id
-     * @param statu
+     * @param id    用户id
+     * @param statu 用户状态
      * @return
      */
     @RequestMapping("/sys/userUpdOrdel")

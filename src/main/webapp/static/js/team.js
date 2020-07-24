@@ -3,8 +3,20 @@ function getMyTeamPeople() {
     $.ajax("getMyPeople",{
         type:"post",
         success:function (rel) {
-            console.log("mypeople");
-            console.log(rel);
+            // console.log("mypeople");
+            // console.log(rel[0].team);
+            var trs="";
+            $(rel).each(function (i) {
+                    trs+="<tr>";
+                    trs+="<td>"+(i+1)+"</td>\n";
+                    trs+="<td>"+this.user.username+"</td>\n";
+                    trs+="<td>"+this.user.birthday+"</td>\n";
+                    trs+="<td>"+this.user.sex+"</td>\n";
+                    trs+="<td>"+this.user.phone+"</td>\n";
+                    trs+="</tr>\n";
+            })
+            $("#table1").html(trs);
+            $("#teamname").text(rel[0].team.name);
         }
     })
 }
@@ -39,7 +51,7 @@ function getProjectList() {
         type:"post",
         success:function (rel) {
             // console.log("project");
-            console.log(rel);
+            // console.log(rel);
             var trs="";
             var pages="";
             $(rel.records).each(function (i) {
@@ -104,22 +116,22 @@ function getTeamList() {
         type:"post",
         success:function (rel) {
             console.log(rel);
-            // var trs="";
-            // var pages="";
-            // $(rel.list).each(function (i) {
-            //     trs+="<tr>";
-            //     trs+="<td>"+(i+1)+"</td>\n";
-            //     trs+="<td>"+this.name+"</td>\n";
-            //     trs+="<td>"+this.user.username+"</td>\n";
-            //     trs+="<td><span onclick='delTeam("+this.id+")'>删除</span></td>";
-            //     trs+="</tr>\n";
-            // })
-            // $("tbody").html(trs);
-            // pages +="<span onclick='toPage(1)'>首页</span>";
-            // pages +="<span onclick='toPage("+rel.pages+")'>尾页</span>";
-            // pages +="<span onclick='toPage("+((rel.pageNum-1)<1?rel.pages:(rel.pageNum-1))+")'>上一页</span>";
-            // pages +="<span onclick='toPage("+((rel.pageNum+1)>rel.pages?1:(rel.pageNum+1))+")'>下一页</span>";
-            // $("#page").html(pages);
+            var trs="";
+            var pages="";
+            $(rel.list).each(function (i) {
+                trs+="<tr>";
+                trs+="<td>"+(i+1)+"</td>\n";
+                trs+="<td>"+this.name+"</td>\n";
+                trs+="<td>"+this.username.username+"</td>\n";
+                trs+="<td><span onclick='delTeam("+this.id+")'>删除</span></td>";
+                trs+="</tr>\n";
+            })
+            $("tbody").html(trs);
+            pages +="<span onclick='toPage(1)'>首页</span>";
+            pages +="<span onclick='toPage("+rel.pages+")'>尾页</span>";
+            pages +="<span onclick='toPage("+((rel.pageNum-1)<1?rel.pages:(rel.pageNum-1))+")'>上一页</span>";
+            pages +="<span onclick='toPage("+((rel.pageNum+1)>rel.pages?1:(rel.pageNum+1))+")'>下一页</span>";
+            $("#page").html(pages);
         }
     })
 }

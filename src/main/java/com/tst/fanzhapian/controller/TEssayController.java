@@ -4,16 +4,19 @@ package com.tst.fanzhapian.controller;
 import com.github.pagehelper.PageInfo;
 import com.tst.fanzhapian.entity.TCheck;
 import com.tst.fanzhapian.entity.TEssay;
+import com.tst.fanzhapian.entity.TVip;
 import com.tst.fanzhapian.enums.CheckTypeEnums;
 import com.tst.fanzhapian.enums.EssayEnums;
 import com.tst.fanzhapian.service.ITCheckService;
 import com.tst.fanzhapian.service.ITEssayService;
+import com.tst.fanzhapian.service.ITVipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 /**
  * <p>
@@ -32,6 +35,8 @@ public class TEssayController{
 
     /**
      * 全部查询
+     * @param title 文章标题
+     * @param  pageNum 当前页
      * @return
      */
     @RequestMapping("/getTEssayList")
@@ -42,8 +47,11 @@ public class TEssayController{
 //        System.out.println(pageNum);
         return itEssayService.getTEssayByLikeAndPage(pageNum,pageSize,title);
     }
+
     /**
      * 后台
+     * @param title 文章标题
+     * @param  pageNum 当前页
      * @return
      */
     @RequestMapping("/sys/getTEssayByLikeAndPageManager")
@@ -57,17 +65,20 @@ public class TEssayController{
 
     /**
      * 单个查询
-     * @param id
+     * @param id 文章id
      * @return
      */
     @RequestMapping("/getOneEssay")
-    public TEssay getOneEssay(String id){
-        return itEssayService.getOneTEssay(id);
+    public TEssay getOneEssay(HttpServletRequest request ,String id){
+        TEssay tEssay = itEssayService.getOneTEssay(id);
+        //添加开始浏览时间
+        request.getSession().setAttribute("starttime",new Date().getTime());
+        return tEssay;
     }
 
     /**
      * 举报
-     * @param id
+     * @param id 文章id
      * @return
      */
     @RequestMapping("/addTheck")
@@ -86,9 +97,9 @@ public class TEssayController{
 
     /**
      * 文章发表
-     * @param request
-     * @param title
-     * @param content
+     * @param request 当前用户，发表人
+     * @param title  文章标题
+     * @param content  文章内容
      * @return
      */
     @RequestMapping("/publishEssay")
@@ -101,6 +112,12 @@ public class TEssayController{
     }
 
 
+    /**
+     *
+     * @param id  文章id
+     * @param statu 文章发表状态
+     * @return
+     */
     @RequestMapping("/sys/updOrdel")
     public boolean updOrdel(String id,String statu){
         Integer i = 0;

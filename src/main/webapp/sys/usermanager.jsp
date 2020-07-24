@@ -13,6 +13,7 @@
     <link type="text/css" rel="stylesheet" href="../static/css/teststorage.css"/>
     <script type="text/javascript" src="../static/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="../static/js/userJS.js"></script>
+    <script type="text/javascript" src="../static/js/utils.js"></script>
 </head>
 <script type="text/javascript">
     $(function () {

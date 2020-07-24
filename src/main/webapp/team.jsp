@@ -24,6 +24,7 @@
 <body>
 
 <div id="hot">
+    <div id="teamname"></div>
     <span class="xf_title" style="width: 1190px;margin-bottom: 20px;font-weight: bold;font-size: 20px">成员信息</span>
     <table>
         <thead style="color:#c7c7c7">
@@ -32,7 +33,6 @@
         <th>成员年龄</th>
         <th>成员性别</th>
         <th>成员电话</th>
-        <th>操作</th>
         </thead>
         <tbody id="table1">
         <tr>
@@ -41,7 +41,6 @@
             <td>1</td>
             <td>1</td>
             <td>1</td>
-            <td><span>删除</span></td>
         </tr>
         </tbody>
     </table>

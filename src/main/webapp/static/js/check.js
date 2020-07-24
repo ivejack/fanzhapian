@@ -32,7 +32,11 @@ function getCheckPublishEssay() {
                 lis += "<li style=\"margin-left: 20px\"><br/>&nbsp;&nbsp;10:30</li>";
                 lis += "<li style=\"margin-left: 25px;color: #FDBE22;\">"+(this.statu==0?'未审核':'已审核')+"</li>";
                 lis += "<li style=\"margin-left: 25px;color: #FDBE22;\">"+(this.result==0?'未审核':(this.result==1?'不通过':'通过'))+"</li>";
-                lis += "<li style=\"margin-left: 80px;color: #3ce650\"><span onclick='gotoCheck(2,"+this.id+");'>批准</span>&nbsp;&nbsp;&nbsp;<span style=\"color: #FDBE22;\" onclick='gotoCheck(1,"+this.id+");'>驳回</span>";
+                if(this.statu==0){
+                    lis += "<li style=\"margin-left: 80px;color: #3ce650\"><span onclick='gotoCheck(2,"+this.id+");'>批准</span>&nbsp;&nbsp;&nbsp;<span style=\"color: #FDBE22;\" onclick='gotoCheck(1,"+this.id+");'>驳回</span>";
+                }else{
+                    lis += "<li style=\"margin-left: 80px;color: #3ce650\"><span onclick='delCheck("+this.id+");'>删除</span>";
+                }
                 lis += "</ul>";
                 lis += "<hr style=\"margin-top: 50px;width: 98%;margin-left: 10px;background-color: #F1F1F1;height: 1px;border:none\"/>";
             })
@@ -76,7 +80,11 @@ function getCheckReport() {
                 lis += "<li style=\"margin-left: 20px\"><br/>&nbsp;&nbsp;10:30</li>";
                 lis += "<li style=\"margin-left: 25px;color: #FDBE22;\">"+(this.statu==0?'未审核':'已审核')+"</li>";
                 lis += "<li style=\"margin-left: 25px;color: #FDBE22;\">"+(this.result==0?'未审核':(this.result==1?'举报无效':'举报有效'))+"</li>";
-                lis += "<li style=\"margin-left: 80px;color: #3ce650\"><span onclick='gotoCheckReport(2,"+this.id+");'>批准</span>&nbsp;&nbsp;&nbsp;<span style=\"color: #FDBE22;\" onclick='gotoCheckReport(1,"+this.id+");'>驳回</span>";
+                if (this.statu==0){
+                    lis += "<li style=\"margin-left: 80px;color: #3ce650\"><span onclick='gotoCheckReport(2,"+this.id+");'>批准</span>&nbsp;&nbsp;&nbsp;<span style=\"color: #FDBE22;\" onclick='gotoCheckReport(1,"+this.id+");'>驳回</span>";
+                }else {
+                    lis += "<li style=\"margin-left: 80px;color: #3ce650\"><span onclick='delCheck("+this.id+");'>删除</span>";
+                }
                 lis += "</ul>";
                 lis += "<hr style=\"margin-top: 50px;width: 98%;margin-left: 10px;background-color: #F1F1F1;height: 1px;border:none\"/>";
             })
@@ -125,6 +133,21 @@ function gotoCheckReport(result,id) {
     // console.log(e.innerText);
     $.ajax("gotoCheckReport",{
         data:{"id":id,"result":result},
+        type: "post",
+        success:function (rel) {
+            if (rel){
+                window.confirm("成功");
+            }else {
+                window.confirm("失败");
+            }
+            getCheckPublishEssay();
+        }
+    })
+}
+
+function delCheck(id) {
+    $.ajax("delCheck",{
+        data:{"id":id},
         type: "post",
         success:function (rel) {
             if (rel){

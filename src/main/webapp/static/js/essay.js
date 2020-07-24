@@ -162,3 +162,11 @@ function updOrdel(e,id) {
         }
     })
 }
+//离开当前页面
+window.onbeforeunload=function () {
+    var id = getUrlParam("essayid");
+    $.ajax("saveHistory",{
+        data:{"id":id},
+        type:"post"
+    })
+}

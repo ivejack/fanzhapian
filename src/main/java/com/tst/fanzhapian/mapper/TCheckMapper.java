@@ -20,7 +20,10 @@ public interface TCheckMapper extends BaseMapper<TCheck> {
 
     /**  查询审核 分页，模糊，全部 根据审核状态，*/
     List<TCheck> getTCheckByLikeAndPage(@Param("type") Integer type,@Param("result") Integer result,@Param("statu") Integer checkStatu);
-
+    /** 查询单个 */
     TCheck getOneCheck(@Param("id") String id);
+    /** 审核 */
     boolean toCheck(@Param("id") String id,@Param("userid") String userid,@Param("result") Integer result);
+    /** 审核 删除*/
+    boolean delCheck(@Param("id")String id);
 }

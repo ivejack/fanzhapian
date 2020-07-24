@@ -19,5 +19,4 @@ public interface THistoryMapper extends BaseMapper<THistory> {
 
     /** 查询全部浏览历史 */
     List<THistory> getAllHistory();
-
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tst.fanzhapian.mapper.TApplyMapper">
+
+    <resultMap id="TApply" type="com.tst.fanzhapian.entity.TApply">
+        <id property="id" column="id"/>
+        <result property="message" column="message"/>
+        <result property="applyId" column="applyId"/>
+        <result property="replyId" column="replyId"/>
+        <association property="applyIds" javaType="com.tst.fanzhapian.entity.TUser">
+            <id property="id" column="applyid"/>
+            <result property="username" column="username"/>
+            <result property="sex" column="sex"/>
+            <result property="loginname" column="loginname"/>
+        </association>
+        <association property="replyIds" javaType="com.tst.fanzhapian.entity.TUser">
+            <id property="id" column="replyid"/>
+            <result property="username" column="usernames"/>
+            <result property="sex" column="sex"/>
+            <result property="loginname" column="loginnames"/>
+        </association>
+    </resultMap>
+
+    <select id="selectid" resultType="java.lang.String">
+        select max(convert (id,signed)) from t_apply
+    </select>
+
+    <insert id="saveNews" parameterType="com.tst.fanzhapian.entity.TApply">
+        insert into t_apply (id,applyId,replyId,message)
+        values (${id},${applyId},${replyId},"${message}")
+    </insert>
+
+    <select id="getTAddFriendNewsByLikeAndPage" resultMap="TApply">
+        select t1.*,t2.username,t2.sex,t2.loginname from t_apply t1,t_user t2
+        where t1.applyId=t2.id
+    </select>
+
+    <update id="getOneFriend">
+        update t_friend
+        set type=1
+        where friendid=${applyId}
+        and userid=${replyId}
+    </update>
+
+    <delete id="delNews">
+        delete from t_apply where id=${id}
+    </delete>
+
+
+</mapper>

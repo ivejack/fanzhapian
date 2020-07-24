@@ -5,11 +5,13 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.tst.fanzhapian.entity.TCheck;
 import com.tst.fanzhapian.entity.TEssay;
+import com.tst.fanzhapian.entity.TVip;
 import com.tst.fanzhapian.enums.CheckStatuEnums;
 import com.tst.fanzhapian.mapper.TCheckMapper;
 import com.tst.fanzhapian.service.ITCheckService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.tst.fanzhapian.service.ITEssayService;
+import com.tst.fanzhapian.service.ITVipService;
 import com.tst.fanzhapian.util.KeyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +35,8 @@ public class TCheckServiceImpl extends ServiceImpl<TCheckMapper, TCheck> impleme
     private TCheckMapper tCheckMapper;
     @Autowired
     private ITEssayService itEssayService;
+    @Autowired
+    private ITVipService itVipService;
 
     /**
      * 查询审核 分页，模糊，全部 根据审核状态
@@ -76,6 +80,15 @@ public class TCheckServiceImpl extends ServiceImpl<TCheckMapper, TCheck> impleme
             oneTEssay.setStatu(0);
         }else {
             oneTEssay.setStatu(1);
+            //积分变动（添加）
+            String userid1 = oneTEssay.getUser().getId();
+//            System.out.println("1:"+userid1);
+//            System.out.println("1:"+oneTEssay);
+            TVip oneVip = itVipService.getOneVip(userid1);
+//            System.out.println(oneVip);
+            Integer score = new Integer(oneVip.getScore());
+            Integer i = 10 + score;
+            itVipService.addScore(userid1,i.toString());
         }
         itEssayService.gotoEssay(oneTEssay.getId(),oneTEssay.getStatu());
         //审核
@@ -100,9 +113,20 @@ public class TCheckServiceImpl extends ServiceImpl<TCheckMapper, TCheck> impleme
         }else {
             //文章不能显示
             oneTEssay.setStatu(0);
+            //积分变动（添加）
+            String userid1 = oneTEssay.getUser().getId();
+            TVip oneVip = itVipService.getOneVip(userid1);
+            Integer score = new Integer(oneVip.getScore());
+            Integer i = 10 + score;
+            itVipService.addScore(userid1,i.toString());
         }
         itEssayService.gotoEssay(oneTEssay.getId(),oneTEssay.getStatu());
         //审核
         return tCheckMapper.toCheck(id,userid,result);
+    }
+
+    @Override
+    public boolean delCheck(String id) {
+        return tCheckMapper.delCheck(id);
     }
 }

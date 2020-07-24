@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<a class="noselect btn pink" onclick="window.location.href='team.jsp'">团队</a>
+<a class="noselect btn pink">团队</a>
 
 <a class="noselect btn green" onclick="window.location.href='myFriend.jsp'">朋友</a>
 

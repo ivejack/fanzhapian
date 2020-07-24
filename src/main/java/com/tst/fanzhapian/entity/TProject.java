@@ -14,7 +14,7 @@ import java.io.Serializable;
  * @since 2020-07-21
  */
 @Data
-public class TProject{
+public class TProject implements Serializable{
 
     /**
      * 项目编号

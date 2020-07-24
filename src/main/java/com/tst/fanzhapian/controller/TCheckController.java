@@ -31,6 +31,9 @@ public class TCheckController{
     /**
      * 模糊查询，分页
      * 文章发表 0
+     * @param pageNow 当前页
+     * @param statu     审核状态
+     * @param result    审核结果
      * @return
      */
     @RequestMapping("/getCheckPublishEssay")
@@ -40,13 +43,16 @@ public class TCheckController{
         result = result==-1?null:result;
         Integer type=0;
         PageInfo<TCheck> tCheckByLikeAndPage = itCheckService.getTCheckByLikeAndPage(type,result,statu, pageNow, pageSize);
-        tCheckByLikeAndPage.getList().forEach(System.out::println);
+//        tCheckByLikeAndPage.getList().forEach(System.out::println);
         return tCheckByLikeAndPage;
     }
 
     /**
      * 模糊查询，分页
      * 文章举报 1
+     * @param pageNow 当前页
+     * @param statu     审核状态
+     * @param result    审核结果
      * @return
      */
     @RequestMapping("/getCheckReport")
@@ -56,14 +62,16 @@ public class TCheckController{
         result = result==-1?null:result;
         Integer type=1;
         PageInfo<TCheck> tCheckByLikeAndPage = itCheckService.getTCheckByLikeAndPage(type,result,statu, pageNow, pageSize);
-        tCheckByLikeAndPage.getList().forEach(System.out::println);
+//        tCheckByLikeAndPage.getList().forEach(System.out::println);
         return tCheckByLikeAndPage;
     }
 
     /**
      * 审核
      * 发表
-     * @param id
+     * @param request
+     * @param id        审核编号
+     * @param result     审核结果
      * @return
      */
     @RequestMapping("/gotoCheck")
@@ -74,12 +82,26 @@ public class TCheckController{
     /**
      * 审核
      * 举报
-     * @param id
+     * @param request
+     * @param id        审核编号
+     * @param result     审核结果
      * @return
      */
     @RequestMapping("/gotoCheckReport")
     public boolean gotoCheckReport(HttpServletRequest request,String id,Integer result){
         return itCheckService.gotoCheckReport(id,(String)request.getSession().getAttribute("userid"),result);
+    }
+
+    /**
+     * 审核
+     * 举报
+     * 删除
+     * @param id 审核编号
+     * @return
+     */
+    @RequestMapping("/delCheck")
+    public boolean delCheck(String id){
+        return itCheckService.delCheck(id);
     }
 
 
