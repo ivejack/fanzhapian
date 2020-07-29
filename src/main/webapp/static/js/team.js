@@ -3,7 +3,7 @@ function getMyTeamPeople() {
     $.ajax("getMyPeople",{
         type:"post",
         success:function (rel) {
-            // console.log("mypeople");
+            console.log(rel);
             // console.log(rel[0].team);
             var trs="";
             $(rel).each(function (i) {
@@ -16,7 +16,9 @@ function getMyTeamPeople() {
                     trs+="</tr>\n";
             })
             $("#table1").html(trs);
-            $("#teamname").text(rel[0].team.name);
+            if(rel!=null){
+                $("#teamname").text("您暂时没有加入任何团队");
+            }
         }
     })
 }

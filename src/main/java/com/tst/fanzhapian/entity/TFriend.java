@@ -8,10 +8,12 @@ import java.io.Serializable;
 public class TFriend implements Serializable {
     private  String id;
 
-
     private String friendId;
+    private TUser friendIds;
 
-    private TUser userId;
+    private String userid;
+
+    private TUser userIds;
 
     private String type;
 }

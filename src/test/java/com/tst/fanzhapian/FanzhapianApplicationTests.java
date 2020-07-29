@@ -1,9 +1,12 @@
 package com.tst.fanzhapian;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.tst.fanzhapian.entity.TFriend;
 import com.tst.fanzhapian.entity.TTest;
 import com.tst.fanzhapian.entity.TTeststorage;
 import com.tst.fanzhapian.entity.TUser;
+import com.tst.fanzhapian.mapper.TFriendMapper;
+import com.tst.fanzhapian.service.ITFriendService;
 import com.tst.fanzhapian.service.ITTeststorageService;
 import com.tst.fanzhapian.service.ITUserService;
 import org.junit.jupiter.api.Test;
@@ -17,6 +20,10 @@ class FanzhapianApplicationTests {
 
     @Autowired
     private ITTeststorageService itTeststorageService;
+    @Autowired
+    private ITFriendService itFriendService;
+    @Autowired
+    private TFriendMapper tFriendMapper;
 
 
 
@@ -44,9 +51,11 @@ class FanzhapianApplicationTests {
 //        }
 
         //获取年龄
-        String s1 = "2001-11-11";
-        int age = getAge(s1);
-        System.out.println(age);
+//        String s1 = "2001-11-11";
+//        int age = getAge(s1);
+//        System.out.println(age);
+//        itFriendService.addFriend(new TFriend());
+        tFriendMapper.getTFriendByLikeAndPage().forEach(System.out::println);
     }
 
     private int getAge(String birthday){

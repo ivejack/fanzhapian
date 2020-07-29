@@ -8,10 +8,11 @@ import com.tst.fanzhapian.entity.TUser;
 
 public interface ITFriendService extends IService<TFriend>{
     /**  分页查询所有好友 */
-    PageInfo<TFriend> getTFriendByLikeAndPage(String type, Integer pageNum, Integer pageSize);
+    PageInfo<TFriend> getTFriendByLikeAndPage(Integer pageNum, Integer pageSize);
 
     /**  分页查询所有陌生人 */
     PageInfo<TFriend> getTAddFriendByLikeAndPage(String type, Integer pageNum, Integer pageSize);
 
+    boolean addFriend(TFriend tFriend);
 
 }

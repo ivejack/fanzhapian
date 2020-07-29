@@ -3,32 +3,48 @@
 <mapper namespace="com.tst.fanzhapian.mapper.TFriendMapper">
 
 
-    <resultMap id="TFriend" type="com.tst.fanzhapian.entity.TFriend">
+    <resultMap id="tfriend" type="com.tst.fanzhapian.entity.TFriend">
         <id property="id" column="id"/>
         <result property="friendId" column="friendId"/>
         <result property="type" column="type"/>
-        <association property="userId" javaType="com.tst.fanzhapian.entity.TUser">
-            <id property="id" column="userid"/>
-            <result property="username" column="username"/>
+
+        <association property="userIds" javaType="com.tst.fanzhapian.entity.TUser">
+            <id property="id" column="id"/>
+            <result property="username" column="friendname"/>
             <result property="sex" column="sex"/>
             <result property="loginname" column="loginname"/>
         </association>
+
+        <association property="friendIds" javaType="com.tst.fanzhapian.entity.TUser">
+            <id property="id" column="id"/>
+            <result property="username" column="username"/>
+        </association>
+
     </resultMap>
 
-    <select id="getTFriendByLikeAndPage" resultMap="TFriend">
-        select t1.*,t2.id userid,t2.username,t2.sex,t2.loginname
-        from t_friend t1,t_user t2
+    <select id="getTFriendByLikeAndPage" resultMap="tfriend">
+        select t1.id,t3.username,t2.username friendname,t2.sex,t2.loginname
+        from t_friend t1,t_user t2,t_user t3
         where t1.userId=t2.id
         and t2.id != t1.friendid
         and t1.type='1'
+		and t1.friendid = t3.id
     </select>
 
-    <select id="getTAddFriendByLikeAndPage" resultMap="TFriend">
-        select t1.*,t2.username,t2.sex,t2.loginname
+    <select id="getTAddFriendByLikeAndPage" resultMap="tfriend">
+        select t1.*,t2.username friendname,t2.sex,t2.loginname
         from t_friend t1,t_user t2
         where t1.userId=t2.id
         and t2.id != t1.friendid
         and t1.type='0'
+    </select>
+
+    <insert id="addFriend">
+        insert into t_friend values(${id},${friendId},${userid},'1');
+    </insert>
+
+    <select id="selectFriendMaxId" resultType="java.lang.String">
+        select max(convert (id,signed)) from t_apply
     </select>
 
 

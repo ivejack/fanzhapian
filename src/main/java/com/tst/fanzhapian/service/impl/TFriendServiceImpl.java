@@ -30,15 +30,14 @@ public class TFriendServiceImpl extends ServiceImpl<TFriendMapper, TFriend> impl
 
     /**
      * 查询好友
-     * @param type
      * @param pageNum
      * @param pageSize
      * @return
      */
     @Override
-    public PageInfo<TFriend> getTFriendByLikeAndPage(String type, Integer pageNum, Integer pageSize) {
+    public PageInfo<TFriend> getTFriendByLikeAndPage( Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum,pageSize);
-        List<TFriend> tFriendByLikeAndPage = tFriendMapper.getTFriendByLikeAndPage(type);
+        List<TFriend> tFriendByLikeAndPage = tFriendMapper.getTFriendByLikeAndPage();
         return new PageInfo<TFriend>(tFriendByLikeAndPage);
     }
 
@@ -54,6 +53,17 @@ public class TFriendServiceImpl extends ServiceImpl<TFriendMapper, TFriend> impl
         PageHelper.startPage(pageNum,pageSize);
         List<TFriend> tAddFriendByLikeAndPage = tFriendMapper.getTAddFriendByLikeAndPage(type);
         return new PageInfo<TFriend>(tAddFriendByLikeAndPage);
+    }
+
+    @Override
+    public boolean addFriend(TFriend tFriend) {
+        Integer s = new Integer(tFriendMapper.selectFriendMaxId());
+        s+=1;
+        //设置id
+        tFriend.setId(s.toString());
+//        System.out.println(tFriend.getId());
+        return tFriendMapper.addFriend(tFriend);
+//        return false;
     }
 
 

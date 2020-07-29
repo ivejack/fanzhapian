@@ -12,9 +12,12 @@ import java.util.List;
 @Component
 public interface TFriendMapper extends BaseMapper<TFriend> {
 
-    List<TFriend> getTFriendByLikeAndPage(@Param("type") String type);
+    List<TFriend> getTFriendByLikeAndPage();
 
     List<TFriend> getTAddFriendByLikeAndPage(@Param("type") String type);
 
+    boolean addFriend(TFriend tFriend);
+
+    String selectFriendMaxId();
 
 }

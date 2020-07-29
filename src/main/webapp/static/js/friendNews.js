@@ -7,7 +7,7 @@ function getTFriendNewsList() {
         success:function (rel) {
             var trs="";
             $(rel.list).each(function () {
-                console.log(rel);
+                // console.log(rel);
                 trs+="<tr>";
                 trs+="<td img></td>";
                 trs+="<td class=\"z3\">"+this.applyIds.username+"</td>";
@@ -16,12 +16,13 @@ function getTFriendNewsList() {
                 trs+="<td class=\"z3\">"+this.message+"</td>";
 
                 trs+= "<td style=\"color:#48ea6e;margin-right:20px;font-size:30px;font-weight:bold\">" +
-                    "<span onclick='gotoNews("+this.id+");'>√</span>"
+                    "<span onclick='gotoNews();'>√</span>"
                 trs+= "<td style=\"color:#fa6e6e;font-size:30px;font-weight:bold\">" +
                     "<span onclick='delNews("+this.id+");'>×</span>";
 
                 trs+="</tr>";
-
+                $("input[name='applyId']").val(this.applyIds.id);
+                $("input[name='replyId']").val(this.replyIds.id);
             })
             $("table").html(trs);
 
@@ -37,11 +38,13 @@ function getTFriendNewsList() {
 }
 
 function gotoNews() {
-    var data = $("#ccc").serialize();
+    var applyid = $("input[name='applyId']").val();
+    var replyid = $("input[name='replyId']").val();
     $.ajax("gotoNews",{
-        data:data,
+        data:{"applyid":applyid,"replyid":replyid},
         type: "post",
         success:function (rel) {
+            // console.log("rel:"+rel);
             if (rel){
                 window.alert("Vitory!");
             }else {

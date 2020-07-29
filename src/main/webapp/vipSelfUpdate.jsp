@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>会员信息修改</title>
-    <link rel="stylesheet" href="static/css/vipSelfUpdate.css"/>
+    <title>个人信息修改</title>
+    <link rel="stylesheet" href="static/css/myselfUpdate.css"/>
     <script type="text/javascript" src="static/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="static/js/myself.js"></script>
 </head>
@@ -21,7 +21,7 @@
 <body>
 <div class="main">
     <div class="title">
-        <p class="titlecontext">当前位置：VIP信息>修改信息</p>
+        <p class="titlecontext">当前位置：我的信息>修改信息</p>
     </div>
     <i class="headimg"></i>
     <form class="myself" id="myselfForm">
@@ -37,7 +37,7 @@
             <select name="month"  class="forminput2"></select><span class="flag2">月</span>
             <select name="day"  class="forminput2"></select><span class="flag2">日</span></div>
         <div class="flag1">
-        <input type="button" value="确认修改" class="submit" onclick="updatemyself()"></div>
+            <input type="button" value="确认修改" class="submit" onclick="updatemyself()"></div>
     </form>
 </div>
 </body>

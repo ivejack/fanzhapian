@@ -1,28 +1,37 @@
 //查询陌生人
 function getTAddFriendList() {
-    var pageNum = $("input[name='pageNow']").val();
+    var data =$("#testForm").serialize();
     $.ajax("getTAddFriendList",{
-        data: {"pageNum":pageNum},
+        data: data,
         type:"post",
         success:function (rel) {
-            console.log(rel);
+            // console.log(rel);
             var trs="";
-            $(rel.list).each(function () {
+            $(rel.records).each(function () {
                 trs+="<tr>";
-                trs+="<td img></td>";
-                trs+="<td class=\"z3\">"+this.userId.username+"</td>";
-                trs+="<td class=\"z3\">"+(this.userId.sex==1?'男':'女')+"</td>";
-                trs+="<td class=\"z3\">"+this.userId.loginname+"</td>";
+                trs+="<td class=\"z3\">"+this.username+"</td>";
+                trs+="<td class=\"z3\">"+(this.sex==1?'男':'女')+"</td>";
+                trs+="<td class=\"z3\">"+this.loginname+"</td>";
+                trs+="<td class=\"z3\" onclick='addfriend("+this.id+")'>添加</td>";
                 trs+="</tr>";
             })
-            $("table").html(trs);
+            $("tbody").html(trs);
             //分页
             var lis ="";
             lis += "<li class=\"div_floor_siez\"><p  onclick=\"toPage(1)\">首页</p></li>" ;
             lis += "<li class=\"div_floor_siez\"><p  onclick=\"toPage("+rel.pages+")\">尾页</p></li>" ;
-            lis += "<li class=\"div_floor_siez\"><p  onclick=\"toPage("+((rel.pageNum-1)<1?rel.pages:(rel.pageNum-1))+")\">上一页</p></li>" ;
-            lis += "<li class=\"div_floor_siez\"><p  onclick=\"toPage("+((rel.pageNum+1)>rel.pages?1:(rel.pageNum+1))+")\">下一页</p></li>" ;
+            lis += "<li class=\"div_floor_siez\"><p  onclick=\"toPage("+((rel.current-1)<1?rel.pages:(rel.current-1))+")\">上一页</p></li>" ;
+            lis += "<li class=\"div_floor_siez\"><p  onclick=\"toPage("+((rel.current+1)>rel.pages?1:(rel.current+1))+")\">下一页</p></li>" ;
             $("#page").html(lis);
         }
     })
+}
+//分页
+function toPage(pageNum) {
+    $("input[name='pageNum']").val(pageNum);
+    getTAddFriendList();
+}
+//
+function addfriend(id) {
+    window.location.href="sendFriendNews.jsp?id="+id;
 }

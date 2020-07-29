@@ -5,14 +5,14 @@ function getTFriendList() {
         data: {"pageNum":pageNum},
         type:"post",
         success:function (rel) {
-            console.log(rel);
+            // console.log(rel);
             var trs="";
             $(rel.list).each(function () {
                 trs+="<tr>";
                 trs+="<td img></td>";
-                trs+="<td class=\"z3\">"+this.userId.username+"</td>";
-                trs+="<td class=\"z3\">"+(this.userId.sex==1?'男':'女')+"</td>";
-                trs+="<td class=\"z3\">"+this.userId.loginname+"</td>";
+                trs+="<td class=\"z3\">"+this.userIds.username+"</td>";
+                trs+="<td class=\"z3\">"+(this.userIds.sex==1?'男':'女')+"</td>";
+                trs+="<td class=\"z3\">"+this.userIds.loginname+"</td>";
 
                 trs+= "<td style=\"color: white\">" +
                     "<span><button type=\"button\"><a onclick=\"window.location.href='shareFriend.jsp'\">分享给TA</a></button></span>"

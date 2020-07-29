@@ -27,34 +27,37 @@
                 <font  color="#808080"><a onclick="window.location.href='myFriend.jsp'">好友列表</a></font><p/>
                 <font  color="#808080"><a onclick="window.location.href='addFriend.jsp'">添加好友</a></font><p/>
             </div>
-            <form id="ccc" action="" method="post">
-                <div class="z3">
-                    <span style="position:fixed;top:165px;left:780px">姓名</span>
-                    <span style="position:fixed;top:165px;left:980px">性别</span>
-                    <span style="position:fixed;top:165px;left:1180px">账号</span>
-                    <span style="position:fixed;top:165px;left:1400px">内容</span>
-                    <span style="position:fixed;top:165px;left:1580px">操作</span>
-                </div>
-                <table style="margin-left:-150px;line-height:60px;">
-                        <tr>
-                            <td class="z3"></td>
-                            <td class="z3"></td>
-                            <td class="z3"></td>
-                            <td class="z3"></td>
-                        </tr>
+            <div class="z3">
+                <span style="position:fixed;top:165px;left:780px">姓名</span>
+                <span style="position:fixed;top:165px;left:980px">性别</span>
+                <span style="position:fixed;top:165px;left:1180px">账号</span>
+                <span style="position:fixed;top:165px;left:1380px">内容</span>
+                <span style="position:fixed;top:165px;left:1580px">操作</span>
+            </div>
+            <table>
+                <tbody>
+                <tr>
+                    <td class="z3"></td>
+                    <td class="z3"></td>
+                    <td class="z3"></td>
+                    <td class="z3"></td>
+                    <td class="z3"></td>
+                </tr>
+                </tbody>
+            </table>
+            <input type="hidden" name="applyId">
+            <input type="hidden" name="replyId">
 
-                </table>
-                <input type="hidden" name="applyId" value="1">
-                <input type="hidden" name="replyId" value="1">
-            </form>
+
         </div>
     </div>
-
     <div class="div_option">
         <ul id="page">
         </ul>
     </div>
 
 </div>
+
+
 </body>
 </html>

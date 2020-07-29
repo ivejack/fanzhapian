@@ -1,14 +1,17 @@
 package com.tst.fanzhapian.controller;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageInfo;
 
 import com.tst.fanzhapian.entity.TApply;
 import com.tst.fanzhapian.entity.TFriend;
 import com.tst.fanzhapian.entity.TUser;
+import com.tst.fanzhapian.enums.UserEnums;
 import com.tst.fanzhapian.service.ITApplyService;
 import com.tst.fanzhapian.service.ITFriendService;
+import com.tst.fanzhapian.service.ITUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +28,8 @@ public class TFriendController {
     private ITFriendService itFriendService;
     @Autowired
     private ITApplyService itApplyService;
+    @Autowired
+    private ITUserService itUserService;
 
 
     /**
@@ -32,83 +37,102 @@ public class TFriendController {
      * @return
      */
     @RequestMapping("/getTFriendList")
-    public PageInfo<TFriend> getTFriendList(String type, Integer pageNum){
+    public PageInfo<TFriend> getTFriendList(Integer pageNum){
         pageNum=pageNum==null?1:pageNum;
         Integer pageSize=5;
-        return itFriendService.getTFriendByLikeAndPage(type,pageNum,pageSize);
+//        System.out.println("getTFriendList");
+//        itFriendService.getTFriendByLikeAndPage(type,pageNum,pageSize).getList().forEach(System.out::println);
+        return itFriendService.getTFriendByLikeAndPage(pageNum,pageSize);
     }
 
     /**
-     * 查询全部陌生人
+     * 查询用户
+     * @return
+     */
+    @RequestMapping("/getonefriendtouser")
+    public TUser getOneFriend(String id){
+        return itUserService.queryOneUser(id);
+    }
+
+    /**
+     * 查询全部用户
      * @return
      */
     @RequestMapping("/getTAddFriendList")
-    public PageInfo<TFriend> getTAddFriendList(String type, Integer pageNum){
-        pageNum=pageNum==null?1:pageNum;
+    public IPage<TUser> getTAddFriendList(Integer pageNum,String username){
+//        System.out.println("1:"+pageNum);
+//        System.out.println("2:"+username);
+        pageNum = pageNum==null?1:pageNum;
         Integer pageSize=5;
-        return itFriendService.getTAddFriendByLikeAndPage(type,pageNum,pageSize);
+        TUser tUser = new TUser();
+        if (username!=null){
+            tUser.setUsername(username);
+        }
+        tUser.setStatu(UserEnums.LIVING.getCode());
+        return itUserService.listUserByLikeAndPage(pageNum, pageSize, tUser);
     }
 
     /**
      * 发送附加消息
      * @param request
-     * @param applyId
+     * @param userid
      * @param message
      * @return
      */
     @RequestMapping("/sendNews")
-    public boolean friendNews(HttpServletRequest request,String applyId,String replyId,String message){
-//        String user = (String) request.getSession().getAttribute("userId");
+    public boolean friendNews(HttpServletRequest request,String userid,String message){
+        String user = (String) request.getSession().getAttribute("userid");
+        System.out.println(user);
         TApply tApply = new TApply();
-        tApply.setApplyId(applyId);
-        tApply.setReplyId(replyId);
+        tApply.setApplyId(user);
+        tApply.setReplyId(userid);
         tApply.setMessage(message);
+        System.out.println(tApply);
         Boolean aBoolean = itApplyService.saveNews(tApply);
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            objectMapper.writeValue(System.out,aBoolean);
-        } catch (IOException e) {
-           e.printStackTrace();
-        }
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        try {
+//            objectMapper.writeValue(System.out,aBoolean);
+//        } catch (IOException e) {
+//           e.printStackTrace();
+//        }
         return aBoolean;
     }
 
     /**
-     * 查询全部消息
+     * 查询好友申请
      * @return
      */
     @RequestMapping("/getTFriendNewsList")
-    public PageInfo<TApply> getTFriendNewsList(HttpServletRequest request,String replyId,Integer pageNum){
-//        String user = (String) request.getSession().getAttribute("userId");
-//        TApply tApply = new TApply();
-//        tApply.setReplyId(user);
+    public PageInfo<TApply> getTFriendNewsList(HttpServletRequest request,Integer pageNum){
+        String user = (String) request.getSession().getAttribute("userid");
         pageNum=pageNum==null?1:pageNum;
         Integer pageSize=5;
-        return itApplyService.getTAddFriendNewsByLikeAndPage(replyId,pageNum,pageSize);
+        return itApplyService.getTAddFriendNewsByLikeAndPage(user,pageNum,pageSize);
     }
 
 
     /**
      * 同意消息
      * @param request
-     * @param applyId
-     * @param replyId
+     * @param applyid
+     * @param replyid
      * @return
      */
     @RequestMapping("/gotoNews")
-    public boolean gotoNews(HttpServletRequest request,String applyId,String replyId){
-//        System.out.println("ApplyID:"+applyId);
-//        System.out.println("ReplyID:"+replyId);
-        TApply tApply = new TApply();
-        tApply.setApplyId(applyId);
-        tApply.setReplyId(replyId);
-        Boolean aBoolean = itApplyService.gotoNews(tApply);
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            objectMapper.writeValue(System.out,aBoolean);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public boolean gotoNews(HttpServletRequest request,String applyid,String replyid){
+        System.out.println("ApplyID:"+applyid);
+        System.out.println("ReplyID:"+replyid);
+        TFriend tFriend = new TFriend();
+        tFriend.setUserid(applyid);
+        tFriend.setFriendId(replyid);
+        Boolean aBoolean = itFriendService.addFriend(tFriend);
+        System.out.println("同意："+aBoolean);
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        try {
+//            objectMapper.writeValue(System.out,aBoolean);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         return aBoolean;
     }
 

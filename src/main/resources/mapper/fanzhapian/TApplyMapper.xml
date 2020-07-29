@@ -32,7 +32,7 @@
 
     <select id="getTAddFriendNewsByLikeAndPage" resultMap="TApply">
         select t1.*,t2.username,t2.sex,t2.loginname from t_apply t1,t_user t2
-        where t1.applyId=t2.id
+        where t1.applyid=t2.id and t1.replyid=${replyId} and t2.id!=${replyId}
     </select>
 
     <update id="getOneFriend">
